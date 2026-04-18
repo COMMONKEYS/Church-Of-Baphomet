@@ -13,11 +13,16 @@
   --bg2:#0b0b1a;
   --glass:rgba(255,255,255,0.06);
   --text:#ffffff;
-  --a:#7c3aed;
-  --b:#06b6d4;
+  --a:#8b5cf6;
+  --b:#22d3ee;
 }
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Orbitron',sans-serif}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Orbitron',sans-serif;
+}
 
 body{
   min-height:100vh;
@@ -44,7 +49,7 @@ body::before{
   opacity:0.18;
   z-index:1;
   pointer-events:none;
-  filter:drop-shadow(0 0 40px rgba(124,58,237,0.4));
+  filter:drop-shadow(0 0 40px rgba(139,92,246,0.4));
 }
 
 header{
@@ -84,7 +89,7 @@ header{
 .nav button:hover,
 .nav button.active{
   transform:translateY(-2px);
-  background:rgba(255,255,255,0.1);
+  background:rgba(255,255,255,0.12);
 }
 
 .settings{
@@ -144,10 +149,7 @@ header{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:16px;
-  margin-top:-60px;
   margin-bottom:30px;
-  position:relative;
-  z-index:20;
 }
 
 .case-card{
@@ -248,6 +250,47 @@ input{
 </header>
 
 <div class="panel active" id="dashboard">
+  <div class="title">SYSTEM DASHBOARD</div>
+
+  <div class="grid">
+    <div class="card">Active Units</div>
+    <div class="card">Resolved Cases</div>
+    <div class="card">Live Monitoring</div>
+  </div>
+</div>
+
+<div class="panel" id="roster">
+  <div class="title">ROSTER</div>
+  <div class="grid">
+    <div class="card">
+      <div class="avatar"></div>
+      CXD<br>Baphomet<br>Operations Lead
+    </div>
+    <div class="card">
+      <div class="avatar"></div>
+      Sin<br>Baphomet<br>Operations Lead
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="team">
+  <div class="title">TEAM</div>
+  <input placeholder="Coming Soon - Be Patient"/>
+  <div class="card">Team system under development</div>
+</div>
+
+<div class="panel" id="archive">
+  <div class="title">RESOLVED CASES</div>
+  <div class="grid">
+    <div class="card">Case 001 - Not Yet Committed</div>
+    <div class="card">Case 002 - Not Yet Committed</div>
+    <div class="card">Case 003 - Not Yet Committed</div>
+  </div>
+</div>
+
+<div class="panel" id="invest">
+
+  <div class="title">UNDER INVESTIGATION</div>
 
   <div class="cases-top">
 
@@ -286,50 +329,10 @@ input{
 
   </div>
 
-  <div class="title">SYSTEM DASHBOARD</div>
-
-  <div class="grid">
-    <div class="card">Active Units</div>
-    <div class="card">Resolved Cases</div>
-    <div class="card">Live Monitoring</div>
-  </div>
-
-</div>
-
-<div class="panel" id="roster">
-  <div class="title">ROSTER</div>
-  <div class="grid">
-    <div class="card">
-      <div class="avatar"></div>
-      CXD<br>Baphomet<br>Operations Lead
-    </div>
-    <div class="card">
-      <div class="avatar"></div>
-      Sin<br>Baphomet<br>Operations Lead
-    </div>
-  </div>
-</div>
-
-<div class="panel" id="team">
-  <div class="title">TEAM</div>
-  <input placeholder="Coming Soon - Be Patient"/>
-  <div class="card">Team system under development</div>
-</div>
-
-<div class="panel" id="archive">
-  <div class="title">RESOLVED CASES</div>
-  <div class="grid">
-    <div class="card">Case 001 - Not Yet Committed</div>
-    <div class="card">Case 002 - Not Yet Committed</div>
-    <div class="card">Case 003 - Not Yet Committed</div>
-  </div>
-</div>
-
-<div class="panel" id="invest">
-  <div class="title">UNDER INVESTIGATION</div>
   <div class="card">
     All active investigations are confidential.
   </div>
+
 </div>
 
 <script>
@@ -344,8 +347,6 @@ tabs.forEach(t=>{
     panels.forEach(p=>p.classList.remove('active'));
     t.classList.add('active');
     document.getElementById(t.dataset.tab).classList.add('active');
-
-    logo.style.display = (t.dataset.tab === 'dashboard') ? 'block' : 'none';
   }
 });
 
@@ -355,9 +356,7 @@ function toggleSettings(){
 }
 
 document.addEventListener("click", () => {
-  if (music.paused) {
-    music.play().catch(()=>{});
-  }
+  if (music.paused) music.play().catch(()=>{});
 }, { once:true });
 </script>
 
